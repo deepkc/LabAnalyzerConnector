@@ -1,0 +1,196 @@
+﻿<Window x:Class="LabAnalyzerConnector.OrdersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Laboratory Orders"
+        Height="650"
+        Width="1100"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize">
+
+    <Grid Margin="25">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <StackPanel Grid.Row="0"
+                    Margin="0,0,0,20">
+
+            <TextBlock Text="Laboratory Orders"
+                       FontSize="26"
+                       FontWeight="Bold"/>
+
+            <TextBlock Text="View laboratory orders stored in the local database."
+                       Margin="0,5,0,0"
+                       Foreground="Gray"/>
+
+        </StackPanel>
+
+
+        <!-- ================================================= -->
+        <!-- TOOLBAR -->
+        <!-- ================================================= -->
+
+        <Grid Grid.Row="1"
+              Margin="0,0,0,15">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+
+            <!-- SEARCH -->
+
+            <TextBox x:Name="SearchTextBox"
+                     Grid.Column="0"
+                     Height="32"
+                     Margin="0,0,10,0"
+                     VerticalContentAlignment="Center"
+                     ToolTip="Search by barcode, patient ID, patient name, specimen ID or order ID"
+                     TextChanged="SearchTextBox_TextChanged"/>
+
+
+            <!-- REFRESH -->
+
+            <Button Grid.Column="1"
+        Content="Refresh"
+        Width="100"
+        Height="32"
+        Margin="0,0,10,0"
+        Click="RefreshButton_Click"/>
+
+            <Button Grid.Column="2"
+        Name="SendOrderButton"
+        Content="Send To Analyzer"
+        Width="140"
+        Height="32"
+        Margin="0,0,10,0"
+        Click="SendOrderButton_Click"/>
+
+            <Button Grid.Column="3"
+        Content="Close"
+        Width="100"
+        Height="32"
+        Click="CloseButton_Click"/>
+
+        </Grid>
+
+
+        <!-- ================================================= -->
+        <!-- ORDER LIST -->
+        <!-- ================================================= -->
+
+        <DataGrid x:Name="OrdersDataGrid"
+                  Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  HeadersVisibility="Column"
+                  GridLinesVisibility="Horizontal">
+
+            <DataGrid.Columns>
+
+                <!-- ORDER ID -->
+
+                <DataGridTextColumn Header="Order ID"
+                                    Binding="{Binding OrderId}"
+                                    Width="150"/>
+
+
+                <!-- BARCODE -->
+
+                <DataGridTextColumn Header="Barcode"
+                                    Binding="{Binding Barcode}"
+                                    Width="130"/>
+
+
+                <!-- PATIENT ID -->
+
+                <DataGridTextColumn Header="Patient ID"
+                                    Binding="{Binding PatientId}"
+                                    Width="120"/>
+
+
+                <!-- PATIENT NAME -->
+
+                <DataGridTextColumn Header="Patient Name"
+                                    Binding="{Binding PatientName}"
+                                    Width="150"/>
+
+
+                <!-- SPECIMEN -->
+
+                <DataGridTextColumn Header="Specimen ID"
+                                    Binding="{Binding SpecimenId}"
+                                    Width="130"/>
+
+
+                <!-- TESTS -->
+
+                <DataGridTextColumn Header="Tests"
+                                    Binding="{Binding OrderedTestsDisplay}"
+                                    Width="200"/>
+
+
+                <!-- PRIORITY -->
+
+                <DataGridTextColumn Header="Priority"
+                                    Binding="{Binding Priority}"
+                                    Width="90"/>
+
+
+                <!-- STATUS -->
+
+                <DataGridTextColumn Header="Status"
+                                    Binding="{Binding Status}"
+                                    Width="100"/>
+
+
+                <!-- CREATED -->
+
+                <DataGridTextColumn Header="Created"
+                                    Binding="{Binding CreatedAtDisplay}"
+                                    Width="160"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+
+        <!-- ================================================= -->
+        <!-- FOOTER -->
+        <!-- ================================================= -->
+
+        <DockPanel Grid.Row="3"
+                   Margin="0,15,0,0">
+
+            <TextBlock x:Name="OrderCountTextBlock"
+                       DockPanel.Dock="Left"
+                       VerticalAlignment="Center"
+                       Foreground="Gray"/>
+
+            <Button Content="Close"
+                    DockPanel.Dock="Right"
+                    Width="100"
+                    Height="35"
+                    Click="CloseButton_Click"/>
+
+        </DockPanel>
+
+    </Grid>
+
+</Window>

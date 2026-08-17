@@ -1,0 +1,112 @@
+# LabAnalyzerConnector
+# System Architecture Document (SAD)
+
+**Document Version:** 1.0  
+**Status:** Draft  
+**Product:** LabAnalyzerConnector  
+**Platform:** Windows Desktop  
+**Technology:** C# / .NET / WPF  
+**Architecture Style:** Modular Monolith  
+**UI Pattern:** MVVM  
+
+---
+
+# 1. Purpose
+
+This document defines the technical architecture of LabAnalyzerConnector.
+
+The architecture is designed to provide a flexible and extensible laboratory analyzer interface engine capable of communicating with multiple laboratory analyzers simultaneously.
+
+The system shall separate:
+
+- User interface
+- Application workflows
+- Domain models
+- Communication mechanisms
+- Protocol processing
+- Data persistence
+- Infrastructure services
+
+The architecture shall allow new analyzers, communication methods, and protocols to be added without requiring major changes to the existing application.
+
+---
+
+# 2. Architecture Goals
+
+The architecture shall prioritize:
+
+1. Maintainability
+2. Extensibility
+3. Reliability
+4. Testability
+5. Separation of concerns
+6. Dynamic configuration
+7. Multi-analyzer support
+8. Bidirectional communication
+9. Continuous operation
+10. Commercial deployment
+
+The architecture shall avoid analyzer-specific logic being tightly coupled to network communication code.
+
+---
+
+# 3. High-Level Architecture
+
+The application shall use a modular monolithic architecture.
+
+```text
+                    ???????????????????????????????
+                    ?      WPF Desktop UI         ?
+                    ?                             ?
+                    ?  Dashboard                  ?
+                    ?  Analyzer Configuration     ?
+                    ?  Connection Monitoring      ?
+                    ?  Message Monitoring         ?
+                    ?  Settings                   ?
+                    ???????????????????????????????
+                                   ?
+                                   ?
+                    ???????????????????????????????
+                    ?       Application           ?
+                    ?                             ?
+                    ?  Analyzer Management        ?
+                    ?  Connection Orchestration   ?
+                    ?  Message Processing        ?
+                    ?  Routing                    ?
+                    ?  Business Workflows         ?
+                    ???????????????????????????????
+                            ?             ?
+                            ?             ?
+                 ?????????????????? ??????????????????
+                 ? Communication  ? ?   Protocols    ?
+                 ?                ? ?                ?
+                 ? TCP Client     ? ? HL7            ?
+                 ? TCP Server     ? ? MLLP           ?
+                 ? Serial         ? ? ASTM           ?
+                 ? Connection     ? ? Custom         ?
+                 ?????????????????? ??????????????????
+                         ?                  ?
+                         ????????????????????
+                                  ?
+                       ??????????????????????
+                       ?        Core        ?
+                       ?                    ?
+                       ? Domain Models      ?
+                       ? Interfaces         ?
+                       ? Enums              ?
+                       ? Domain Rules       ?
+                       ??????????????????????
+
+                       ??????????????????????
+                       ?  Infrastructure    ?
+                       ?                    ?
+                       ? Database           ?
+                       ? Configuration      ?
+                       ? Logging            ?
+                       ? File Storage       ?
+                       ??????????????????????
+                                 ?
+                                 ?
+                           SQLite / Files
+
+

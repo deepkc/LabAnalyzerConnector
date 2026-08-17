@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LabAnalyzerConnector.Communication\LabAnalyzerConnector.Communication.csproj" />
+    <ProjectReference Include="..\LabAnalyzerConnector.Core\LabAnalyzerConnector.Core.csproj" />
+    <ProjectReference Include="..\LabAnalyzerConnector.Domain\LabAnalyzerConnector.Domain.csproj" />
+    <ProjectReference Include="..\LabAnalyzerConnector.Mapping\LabAnalyzerConnector.Mapping.csproj" />
+    <ProjectReference Include="..\LabAnalyzerConnector.Protocols\LabAnalyzerConnector.Protocols.csproj" />
+  </ItemGroup>
+
+</Project>

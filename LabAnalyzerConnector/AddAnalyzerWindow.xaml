@@ -1,0 +1,694 @@
+﻿<Window x:Class="LabAnalyzerConnector.AddAnalyzerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Analyzer"
+        Height="750"
+        Width="800"
+        MinHeight="600"
+        MinWidth="700"
+        WindowStartupLocation="CenterOwner"
+        Background="#F5F7FA">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <Border Grid.Row="0"
+                Background="#1F2937"
+                Padding="25,0">
+
+            <StackPanel VerticalAlignment="Center">
+
+                <TextBlock Text="Add Analyzer"
+                           Foreground="White"
+                           FontSize="22"
+                           FontWeight="SemiBold"/>
+
+                <TextBlock Text="Configure a new laboratory analyzer"
+                           Foreground="#9CA3AF"
+                           FontSize="12"
+                           Margin="0,3,0,0"/>
+
+            </StackPanel>
+
+        </Border>
+
+
+        <!-- ================================================= -->
+        <!-- FORM -->
+        <!-- ================================================= -->
+
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+
+            <StackPanel Margin="30">
+
+
+                <!-- ========================================= -->
+                <!-- ANALYZER INFORMATION -->
+                <!-- ========================================= -->
+
+                <TextBlock Text="Analyzer Information"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Foreground="#111827"
+                           Margin="0,0,0,15"/>
+
+
+                <!-- Analyzer Name -->
+
+                <TextBlock Text="Analyzer Name"
+                           FontSize="12"
+                           FontWeight="SemiBold"
+                           Foreground="#374151"/>
+
+                <TextBox x:Name="NameTextBox"
+                         Height="35"
+                         Margin="0,5,0,15"
+                         Padding="10,7"/>
+
+
+                <!-- Manufacturer -->
+
+                <TextBlock Text="Manufacturer"
+                           FontSize="12"
+                           FontWeight="SemiBold"
+                           Foreground="#374151"/>
+
+                <ComboBox
+    x:Name="ManufacturerComboBox"
+    Height="35"
+    Margin="0,5,0,15"
+    SelectionChanged="ManufacturerComboBox_SelectionChanged"/>
+
+
+                <!-- Model -->
+
+                <TextBlock Text="Model"
+                           FontSize="12"
+                           FontWeight="SemiBold"
+                           Foreground="#374151"/>
+
+                <ComboBox
+    x:Name="ModelComboBox"
+    Height="35"
+    Margin="0,5,0,15"
+    SelectionChanged="ModelComboBox_SelectionChanged"/>
+
+
+                <!-- Serial Number -->
+
+                <TextBlock Text="Serial Number"
+                           FontSize="12"
+                           FontWeight="SemiBold"
+                           Foreground="#374151"/>
+
+                <TextBox x:Name="SerialNumberTextBox"
+                         Height="35"
+                         Margin="0,5,0,25"
+                         Padding="10,7"/>
+
+                <Border
+    Margin="0,0,0,25"
+    Padding="15"
+    BorderBrush="#D1D5DB"
+    BorderThickness="1"
+    CornerRadius="8"
+    Background="#FAFAFA">
+
+                    <StackPanel>
+
+                        <TextBlock
+            Text="Analyzer Profile"
+            FontSize="16"
+            FontWeight="Bold"
+            Margin="0,0,0,10"/>
+
+                        <TextBlock
+            x:Name="ProfileCategoryText"/>
+
+                        <TextBlock
+            x:Name="ProfileProtocolText"/>
+
+                        <TextBlock
+            x:Name="ProfileDirectionText"/>
+
+                        <TextBlock
+            x:Name="ProfileConnectionText"/>
+
+                        <TextBlock
+            x:Name="ProfileOrdersText"/>
+
+                        <TextBlock
+            x:Name="ProfileResultsText"/>
+
+                        <TextBlock
+            x:Name="ProfileQcText"/>
+
+                        <TextBlock
+            x:Name="ProfileDefaultComText"/>
+
+                        <TextBlock
+            x:Name="ProfileDefaultBaudText"/>
+
+                        <TextBlock
+            x:Name="ProfileNotesText"
+            TextWrapping="Wrap"
+            Margin="0,8,0,0"/>
+
+                    </StackPanel>
+
+                </Border>
+
+                <!-- ========================================= -->
+                <!-- PROFILE INFORMATION -->
+                <!-- ========================================= -->
+
+                <TextBlock Text="Analyzer Profile"
+           FontSize="18"
+           FontWeight="SemiBold"
+           Foreground="#111827"
+           Margin="0,10,0,15"/>
+
+                <TextBlock Text="Category"
+           FontWeight="SemiBold"/>
+
+                <TextBlock
+    Text="Protocol"
+    FontSize="12"
+    FontWeight="SemiBold"/>
+
+                <TextBox
+    x:Name="ProfileProtocolTextBox"
+    IsReadOnly="True"
+    Margin="0,5,0,10"/>
+
+                <TextBlock
+    Text="Communication Direction"
+    FontSize="12"
+    FontWeight="SemiBold"/>
+
+                <TextBox
+    x:Name="ProfileDirectionTextBox"
+    IsReadOnly="True"
+    Margin="0,5,0,10"/>
+
+                <TextBlock
+    Text="Connection Type"
+    FontSize="12"
+    FontWeight="SemiBold"/>
+
+                <TextBox
+    x:Name="ProfileConnectionTypeTextBox"
+    IsReadOnly="True"
+    Margin="0,5,0,10"/>
+
+                <TextBlock
+    Text="Default COM Port"
+    FontSize="12"
+    FontWeight="SemiBold"/>
+
+                <TextBox
+    x:Name="ProfileComPortTextBox"
+    IsReadOnly="True"
+    Margin="0,5,0,10"/>
+
+                <TextBlock
+    Text="Default Baud Rate"
+    FontSize="12"
+    FontWeight="SemiBold"/>
+
+                <TextBox
+    x:Name="ProfileBaudRateTextBox"
+    IsReadOnly="True"
+    Margin="0,5,0,10"/>
+
+                <TextBox x:Name="CategoryTextBox"
+         IsReadOnly="True"
+         Background="#F3F4F6"
+         Margin="0,5,0,10"/>
+
+                <TextBlock Text="Profile Version"
+           FontWeight="SemiBold"/>
+
+                <TextBox x:Name="ProfileVersionTextBox"
+         IsReadOnly="True"
+         Background="#F3F4F6"
+         Margin="0,5,0,10"/>
+
+                <CheckBox x:Name="SupportsOrdersCheckBox"
+          Content="Supports Orders"
+          IsEnabled="False"
+          Margin="0,5"/>
+
+                <CheckBox x:Name="SupportsResultsCheckBox"
+          Content="Supports Results"
+          IsEnabled="False"
+          Margin="0,5"/>
+
+                <CheckBox x:Name="SupportsQcCheckBox"
+          Content="Supports QC"
+          IsEnabled="False"
+          Margin="0,5"/>
+
+                <TextBlock Text="Notes"
+           FontWeight="SemiBold"
+           Margin="0,15,0,5"/>
+
+                <TextBox x:Name="NotesTextBox"
+         Height="80"
+         TextWrapping="Wrap"
+         AcceptsReturn="True"
+         IsReadOnly="True"
+         Background="#F3F4F6"/>
+
+                <!-- ========================================= -->
+                <!-- PROTOCOL CONFIGURATION -->
+                <!-- ========================================= -->
+
+                <TextBlock Text="Protocol Configuration"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Foreground="#111827"
+                           Margin="0,0,0,15"/>
+
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <!-- Protocol -->
+
+                    <StackPanel Grid.Column="0">
+
+                        <TextBlock Text="Protocol"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="#374151"/>
+
+                        <ComboBox x:Name="ProtocolComboBox"
+                                  Height="35"
+                                  Margin="0,5,0,15"/>
+
+                    </StackPanel>
+
+
+                    <!-- Protocol Version -->
+
+                    <StackPanel Grid.Column="2">
+
+                        <TextBlock Text="Protocol Version"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="#374151"/>
+
+                        <TextBox x:Name="ProtocolVersionTextBox"
+                                 Height="35"
+                                 Margin="0,5,0,15"
+                                 Padding="10,7"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+
+                <!-- ========================================= -->
+                <!-- COMMUNICATION DIRECTION -->
+                <!-- ========================================= -->
+
+                <TextBlock Text="Communication Direction"
+                           FontSize="12"
+                           FontWeight="SemiBold"
+                           Foreground="#374151"
+                           Margin="0,5,0,0"/>
+
+                <ComboBox x:Name="CommunicationDirectionComboBox"
+                          Height="35"
+                          Margin="0,5,0,25"/>
+
+
+                <!-- ========================================= -->
+                <!-- CONNECTION CONFIGURATION -->
+                <!-- ========================================= -->
+
+                <TextBlock Text="Connection Configuration"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Foreground="#111827"
+                           Margin="0,0,0,15"/>
+
+
+                <!-- Connection Type -->
+
+                <TextBlock Text="Connection Type"
+                           FontSize="12"
+                           FontWeight="SemiBold"
+                           Foreground="#374151"/>
+
+                <ComboBox x:Name="ConnectionTypeComboBox"
+                          Height="35"
+                          Margin="0,5,0,20"/>
+
+
+                <!-- ========================================= -->
+                <!-- TCP CONFIGURATION -->
+                <!-- ========================================= -->
+
+                <Border x:Name="TcpConfigurationPanel"
+                        Background="White"
+                        BorderBrush="#E5E7EB"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Padding="20"
+                        Margin="0,0,0,20">
+
+                    <StackPanel>
+
+                        <TextBlock Text="TCP/IP Configuration"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Foreground="#111827"
+                                   Margin="0,0,0,15"/>
+
+
+                        <!-- TCP Connection Mode -->
+
+                        <TextBlock Text="Connection Mode"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"/>
+
+                        <ComboBox x:Name="ConnectionModeComboBox"
+                                  Height="35"
+                                  Margin="0,5,0,20"/>
+
+
+                        <!-- TCP CLIENT -->
+
+                        <StackPanel x:Name="TcpClientPanel">
+
+                            <TextBlock Text="Remote Analyzer IP Address"
+                                       FontSize="12"
+                                       FontWeight="SemiBold"/>
+
+                            <TextBox x:Name="RemoteIpAddressTextBox"
+                                     Height="35"
+                                     Margin="0,5,0,15"
+                                     Padding="10,7"/>
+
+
+                            <TextBlock Text="Remote Analyzer Port"
+                                       FontSize="12"
+                                       FontWeight="SemiBold"/>
+
+                            <TextBox x:Name="RemotePortTextBox"
+                                     Height="35"
+                                     Margin="0,5,0,15"
+                                     Padding="10,7"/>
+
+                        </StackPanel>
+
+
+                        <!-- TCP SERVER -->
+
+                        <StackPanel x:Name="TcpServerPanel">
+
+                            <TextBlock Text="Local IP Address"
+                                       FontSize="12"
+                                       FontWeight="SemiBold"/>
+
+                            <TextBox x:Name="LocalIpAddressTextBox"
+                                     Height="35"
+                                     Margin="0,5,0,15"
+                                     Padding="10,7"
+                                     Text="0.0.0.0"/>
+
+
+                            <TextBlock Text="Local Listening Port"
+                                       FontSize="12"
+                                       FontWeight="SemiBold"/>
+
+                            <TextBox x:Name="LocalPortTextBox"
+                                     Height="35"
+                                     Margin="0,5,0,15"
+                                     Padding="10,7"/>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!-- ========================================= -->
+                <!-- SERIAL CONFIGURATION -->
+                <!-- ========================================= -->
+
+                <Border x:Name="SerialConfigurationPanel"
+                        Background="White"
+                        BorderBrush="#E5E7EB"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Padding="20"
+                        Margin="0,0,0,20">
+
+                    <StackPanel>
+
+                        <TextBlock Text="Serial / RS-232 Configuration"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Foreground="#111827"
+                                   Margin="0,0,0,15"/>
+
+
+                        <!-- COM PORT + BAUD RATE -->
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <!-- COM Port -->
+
+                            <StackPanel Grid.Column="0">
+
+                                <TextBlock Text="COM Port"
+                                           FontSize="12"
+                                           FontWeight="SemiBold"/>
+
+                                <ComboBox x:Name="ComPortComboBox"
+          Height="35"
+          Margin="0,5,0,15"/>
+
+                            </StackPanel>
+
+
+                            <!-- Baud Rate -->
+
+                            <StackPanel Grid.Column="2">
+
+                                <TextBlock Text="Baud Rate"
+                                           FontSize="12"
+                                           FontWeight="SemiBold"/>
+
+                                <ComboBox x:Name="BaudRateComboBox"
+                                          Height="35"
+                                          Margin="0,5,0,15"/>
+
+                            </StackPanel>
+
+                        </Grid>
+
+
+                        <!-- DATA BITS + PARITY -->
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <!-- Data Bits -->
+
+                            <StackPanel Grid.Column="0">
+
+                                <TextBlock Text="Data Bits"
+                                           FontSize="12"
+                                           FontWeight="SemiBold"/>
+
+                                <ComboBox x:Name="DataBitsComboBox"
+                                          Height="35"
+                                          Margin="0,5,0,15"/>
+
+                            </StackPanel>
+
+
+                            <!-- Parity -->
+
+                            <StackPanel Grid.Column="2">
+
+                                <TextBlock Text="Parity"
+                                           FontSize="12"
+                                           FontWeight="SemiBold"/>
+
+                                <ComboBox x:Name="ParityComboBox"
+                                          Height="35"
+                                          Margin="0,5,0,15"/>
+
+                            </StackPanel>
+
+                        </Grid>
+
+
+                        <!-- Stop Bits -->
+
+                        <TextBlock Text="Stop Bits"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"/>
+
+                        <ComboBox x:Name="StopBitsComboBox"
+                                  Height="35"
+                                  Margin="0,5,0,0"/>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!-- ========================================= -->
+                <!-- CONNECTION BEHAVIOUR -->
+                <!-- ========================================= -->
+
+                <TextBlock Text="Connection Behaviour"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Foreground="#111827"
+                           Margin="0,10,0,15"/>
+
+
+                <CheckBox x:Name="IsEnabledCheckBox"
+                          Content="Enable analyzer"
+                          IsChecked="True"
+                          Margin="0,0,0,10"/>
+
+
+                <CheckBox x:Name="AutoConnectCheckBox"
+                          Content="Automatically connect when application starts"
+                          IsChecked="True"
+                          Margin="0,0,0,10"/>
+
+
+                <CheckBox x:Name="AutoReconnectCheckBox"
+                          Content="Automatically reconnect when connection is lost"
+                          IsChecked="True"
+                          Margin="0,0,0,20"/>
+
+                <!-- ========================================= -->
+                <!-- TEST CONNECTION -->
+                <!-- ========================================= -->
+
+                <Border Background="White"
+        BorderBrush="#E5E7EB"
+        BorderThickness="1"
+        CornerRadius="8"
+        Padding="20"
+        Margin="0,20,0,0">
+
+                    <StackPanel>
+
+                        <TextBlock Text="Connection Test"
+                   FontSize="16"
+                   FontWeight="SemiBold"
+                   Margin="0,0,0,15"/>
+
+                        <Button x:Name="TestConnectionButton"
+                Content="Test Connection"
+                Width="170"
+                Height="35"
+                HorizontalAlignment="Left"
+                Click="TestConnectionButton_Click"/>
+
+                        <TextBlock Text="Status"
+                   FontWeight="SemiBold"
+                   Margin="0,20,0,5"/>
+
+                        <Border Background="#F3F4F6"
+                CornerRadius="5"
+                Padding="10">
+
+                            <TextBlock x:Name="ConnectionStatusText"
+                       Text="Not Tested"
+                       FontWeight="SemiBold"
+                       Foreground="DarkOrange"/>
+
+                        </Border>
+
+                    </StackPanel>
+
+                </Border>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
+
+        <!-- ================================================= -->
+        <!-- FOOTER -->
+        <!-- ================================================= -->
+
+        <Border Grid.Row="2"
+                Background="White"
+                BorderBrush="#E5E7EB"
+                BorderThickness="0,1,0,0"
+                Padding="20,0">
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+
+                <Button x:Name="CancelButton"
+                        Content="Cancel"
+                        Width="90"
+                        Height="35"
+                        Margin="0,0,10,0"
+                        Click="CancelButton_Click"/>
+
+
+                <Button x:Name="SaveButton"
+                        Content="Save Analyzer"
+                        Width="120"
+                        Height="35"
+                        Background="#2563EB"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="SemiBold"
+                        Click="SaveButton_Click"/>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+
+</Window>
